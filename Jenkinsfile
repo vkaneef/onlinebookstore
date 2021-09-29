@@ -2,14 +2,30 @@ pipeline {
     agent any
 
     stages {
-        stage('Build') {
+        stage ('Compile Stage') {
+
             steps {
-                sh 'clean'
+                withMaven(maven : 'maven_3_8_2') {
+                    sh 'mvn clean compile'
+                }
             }
         }
-        stage('genaratin war') {
+
+        stage ('Testing Stage') {
+
             steps {
-                sh 'install'
+                withMaven(maven : 'maven_3_8_2') {
+                    sh 'mvn test'
+                }
+            }
+        }
+
+
+        stage ('Deployment Stage') {
+            steps {
+                withMaven(maven : 'maven_3_8_2') {
+                    sh 'mvn deploy'
+                }
             }
         }
     }
