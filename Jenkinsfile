@@ -3,7 +3,7 @@ pipeline {
    stages {
         stage ('git checkout') {
 		   step{
-		      git credentialsId: 'github', url: 'https://github.com/vkaneef/onlinebookstore.git'
+		      git branch: 'J2EE', credentialsId: 'tomcat', url: 'https://github.com/vkaneef/onlinebookstore.git'
 			}
 		}
 		stage ('maven build'){
