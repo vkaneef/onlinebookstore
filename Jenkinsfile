@@ -4,18 +4,14 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'Building..'
+                sh 'clean'
             }
         }
-        stage('Test') {
+        stage('genaratin war') {
             steps {
-                echo 'Testing..'
+                sh 'install'
             }
         }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
-            }
-        }
+     
     }
 }
